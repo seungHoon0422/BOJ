@@ -6,7 +6,7 @@ BaekJoon Online Judge 웹사이트의 문제풀이 Repository입니다.
 <br>
 
 #### 🚀 Contents
-- [Implementation](./Implementation)
-- [Sort](./Sort)
+- [Implementation](./src/Implementation)
+- [Sort](./src/Sort)
 
 
