@@ -11,13 +11,26 @@ class Main {
     static StringBuilder sb = new StringBuilder();
     private static int N;
     private static int K;
+    private static Stone[] stones;
+    private static Bag[] bags;
 
     public static void main(String[] args) throws IOException {
+        initVariables();
+        sorting(stones, bags);
+        debugCode(stones, bags);
+
+        for(int i=0; i<N; i++) {
+
+        }
+    }
+
+
+    private static void initVariables() throws IOException {
         st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
-        Stone[] stones = new Stone[N];
-        Bag[] bags = new Bag[K];
+        stones = new Stone[N];
+        bags = new Bag[K];
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             stones[i] = new Stone(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
@@ -26,16 +39,16 @@ class Main {
             st = new StringTokenizer(br.readLine());
             bags[i] = new Bag(Integer.parseInt(st.nextToken()), 0);
         }
+    }
 
-        Arrays.sort(stones);
-        Arrays.sort(bags);
-
+    private static void debugCode(Stone[] stones, Bag[] bags) {
         System.out.println("stones : " + Arrays.toString(stones));
         System.out.println("bags : " + Arrays.toString(bags));
+    }
 
-        for(int i=0; i<N; i++) {
-
-        }
+    private static void sorting(Stone[] stones, Bag[] bags) {
+        Arrays.sort(stones);
+        Arrays.sort(bags);
     }
 
     static class Stone implements Comparable<Stone>{
