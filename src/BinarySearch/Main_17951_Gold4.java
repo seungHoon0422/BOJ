@@ -1,3 +1,5 @@
+package BinarySearch;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
@@ -17,7 +19,7 @@ import java.util.StringTokenizer;
  * 아니면 left를 mid+1로 증가시킨다.
  *
  */
-class Main {
+class Main_17951_Gold4 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;

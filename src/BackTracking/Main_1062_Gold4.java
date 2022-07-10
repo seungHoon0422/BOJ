@@ -18,7 +18,6 @@ import java.util.StringTokenizer;
  */
 class Main_1062_Gold4 {
 
-
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
