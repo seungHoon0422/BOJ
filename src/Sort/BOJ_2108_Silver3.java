@@ -1,4 +1,7 @@
-import java.io.*;
+package Sort;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.*;
 
 
@@ -14,7 +17,7 @@ import java.util.*;
  *
  *
  */
-class Main {
+class BOJ_2108_Silver3 {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
