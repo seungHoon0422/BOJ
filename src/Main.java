@@ -1,71 +1,65 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 
 /**
- * @Problem
- * [백준 17951 흩날리는 시험지 속에서 내 평정이 느껴진거야 Gold 4]
- * 이분 탐색
- * 전체 score를 K개의 그룹으로 나눴을 때 합의 최소의 최대를 구하는 문제
- *
+ * @Problem 주어지는 숫자의 통계를 내는 문제, 산술평균, 중앙값, 최빈값, 최대 최소의 차이
  * @Solution
- * 전체 점수가 주어졌을 때 이분탐색으로 최대합을 찾아나간다.
- * left = 0 으로 두고, right를 설정할 때 전체합의 평균으로 설정해서 시간을 단축
- * mid값으로 탐색해나가는데 기준은 K개의 그룹으로 설정이 가능한지 판단한다.
- * K개의 그룹보다 적게 만들어지면 기준이 높다는 얘기니까 right를 mid-1 로 낮추고,
- * 아니면 left를 mid+1로 증가시킨다.
+ * 1. 산술평균을 내는 과정에서 반올림이 필요한데 이 때 double형태로 바꿔서 계산해야한다.
+ * 2. 중앙값의 경우 주어진 숫자들을 정렬시킨 후 주어진 N값의 인덱스를 활용해 추출
+ * 3. 최빈값 : 최빈값이 여러개인 경우 두번째 값을 출력해야 하므로, 최대로 많이나온 경우를 저장한 다음
+ * 해당하는 숫자들을 정렬하여 2개 이상일 경우 두번째 값을, 아닌 경우 첫번째 값을 출력
+ * 4. 최대 최소의 차이 : 값을 입력받으면서 최대, 최소값을 찾고 그 차이를 출력한다.
+ *
  *
  */
 class Main {
 
+
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
-    private static int N, K;
-    private static int[] score;
+    static int[] arr;
+    static int N;
+    public static void main(String[] args) throws Exception {
 
-
-    public static void main(String[] args) throws Exception{
-
-        st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
-
-        score = new int[N];
-        int all  = 0;
-        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(br.readLine());
+        arr = new int[N];
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        Map<Integer, Integer> count = new HashMap<>();
         for(int i=0; i<N; i++) {
-            score[i] = Integer.parseInt(st.nextToken());
-            all += score[i];
+            arr[i] = Integer.parseInt(br.readLine());
+            sum += arr[i];
+            if(!count.containsKey(arr[i])) count.put(arr[i], 1);
+            else count.put(arr[i], count.get(arr[i])+1);
+            min = Math.min(arr[i], min);
+            max = Math.max(arr[i], max);
         }
-        int left = 0;
-        int right = all/K;
-        if(K==1) {
-            System.out.println(all);
-            return;
-        }
-        while(left <= right) {
-            int mid = (left+right) >> 1;
-            int groupCount = 1;
-            int sum = 0;
-            int minsum = Integer.MAX_VALUE;
-            for(int i=0; i<N; i++) {
-                sum += score[i];
-                if(sum >= mid) {
-                    minsum = Math.min(minsum, sum + score[i]);
-                    groupCount++;
-                    sum = 0;
-                }
+        int maxCount = 0;
+        for(Integer key : count.keySet()) {
+            if (count.get(key) > maxCount) {
+                maxCount = count.get(key);
             }
-            if(groupCount > K) left = mid + 1;
-            else right = mid - 1;
         }
+        List<Integer> mode = new ArrayList<>();
+        for(Integer key : count.keySet()) {
+            if (count.get(key) == maxCount) {
+                mode.add(key);
+            }
+        }
+        int arg3 = 0;
+        Collections.sort(mode);
+        if(mode.size() == 1) arg3 = mode.get(0);
+        else arg3 = mode.get(1);
 
-
-        System.out.println(right);
-
+        Arrays.sort(arr);
+        sb.append((int)Math.round((double)sum / N)).append("\n").
+                append(arr[arr.length/2]).append("\n").
+                append(arg3).append("\n").
+                append(max - min);
+        System.out.println(sb);
     }
-
 
 }
