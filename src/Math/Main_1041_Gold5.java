@@ -46,6 +46,7 @@ class Main_1041_Gold5 {
             dice[i] = Integer.parseInt(st.nextToken());
         }
 
+
         if(N==1) {
             Arrays.sort(dice);
             int sum = 0;
