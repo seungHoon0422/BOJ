@@ -1,66 +1,59 @@
-import java.io.*;
-import java.util.*;
+    import java.util.*;
+    import java.io.*;
 
 
 /**
- * @Problem 주어지는 숫자의 통계를 내는 문제, 산술평균, 중앙값, 최빈값, 최대 최소의 차이
- * @Solution
- * [Sort]
- * 1. 산술평균을 내는 과정에서 반올림이 필요한데 이 때 double형태로 바꿔서 계산해야한다.
- * 2. 중앙값의 경우 주어진 숫자들을 정렬시킨 후 주어진 N값의 인덱스를 활용해 추출
- * 3. 최빈값 : 최빈값이 여러개인 경우 두번째 값을 출력해야 하므로, 최대로 많이나온 경우를 저장한 다음
- * 해당하는 숫자들을 정렬하여 2개 이상일 경우 두번째 값을, 아닌 경우 첫번째 값을 출력
- * 4. 최대 최소의 차이 : 값을 입력받으면서 최대, 최소값을 찾고 그 차이를 출력한다.
+*   @Problem 진행한 판수와, 이긴 판수가 주어졌을 때 승률에 변화가 생기려면 몇판을 연속으로 이겨야 하는지 구하는 문제
  *
+ *   @Solution
+ *   [이분탐색, 수학]
+ *   X의 범위가 10억이므로, 순차적으로 한판씩 이기는 경우를 고려하여 계산하면 시간초과 예상
+ *   -> 이분탐색 적용 포인트
+ *   승률을 구하는 수식에서 double로 형번환 하여 마지막에 100을 곱해주는 과정은
+ *   부동소수점의 특징에 의해서 정확한 값이 계산되기 힘들다.
+ *   따라서 소수점을 고려하지 않아도 되게 100을 곱한 뒤에 나눠주는게 포인트
  *
- */
-class Main {
+*
+ *     (오답)
+ *     private static int getPercent(int x, int y) {
+ *          return Math.floor(((double) y / x) * 100);
+ *     }
+ *     (정답)
+ *     private static int getPercent(int x, int y) {
+ *          return (int)((long)y * 100 / x);
+ *     }
+*
+*/
 
+    class Main {
 
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static StringTokenizer st;
-    static StringBuilder sb = new StringBuilder();
-    static int[] arr;
-    static int N;
-    public static void main(String[] args) throws Exception {
+        private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        private static StringTokenizer st;
+        private static StringBuilder sb = new StringBuilder();
+        public static void main(String[] args) throws IOException {
 
-        N = Integer.parseInt(br.readLine());
-        arr = new int[N];
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        int sum = 0;
-        Map<Integer, Integer> count = new HashMap<>();
-        for(int i=0; i<N; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
-            sum += arr[i];
-            if(!count.containsKey(arr[i])) count.put(arr[i], 1);
-            else count.put(arr[i], count.get(arr[i])+1);
-            min = Math.min(arr[i], min);
-            max = Math.max(arr[i], max);
-        }
-        int maxCount = 0;
-        for(Integer key : count.keySet()) {
-            if (count.get(key) > maxCount) {
-                maxCount = count.get(key);
+            st = new StringTokenizer(br.readLine());
+            int X = Integer.parseInt(st.nextToken());
+            int Y = Integer.parseInt(st.nextToken());
+            int percent = getPercent(X,Y);
+            int answer = -1;
+            int left = 0;
+            int right = 1_000_000_000;
+
+            while(left <= right) {
+                int middle = (left + right) >> 1;
+                int perc = getPercent(X+middle, Y+middle);
+                if(perc != percent) {
+                    answer = middle;
+                    right = middle -1;
+                } else {
+                    left = middle + 1;
+                }
             }
+            System.out.println(answer);
         }
-        List<Integer> mode = new ArrayList<>();
-        for(Integer key : count.keySet()) {
-            if (count.get(key) == maxCount) {
-                mode.add(key);
-            }
-        }
-        int arg3 = 0;
-        Collections.sort(mode);
-        if(mode.size() == 1) arg3 = mode.get(0);
-        else arg3 = mode.get(1);
 
-        Arrays.sort(arr);
-        sb.append((int)Math.round((double)sum / N)).append("\n").
-                append(arr[arr.length/2]).append("\n").
-                append(arg3).append("\n").
-                append(max - min);
-        System.out.println(sb);
+        private static int getPercent(int x, int y) {
+            return (int)((long)y * 100 / x);
+        }
     }
-
-}
