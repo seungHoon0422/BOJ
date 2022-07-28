@@ -1,5 +1,12 @@
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.StringTokenizer;
 
 
 /**
@@ -12,7 +19,7 @@ import java.io.*;
  * [구현, 덱]
  * 배열의 앞, 뒤에 해당하는 숫자를 지워야 하는 작업이므로  deque를 사용한다.
  */
-class Main {
+class Main_5430_Gold5 {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
