@@ -3,10 +3,7 @@ package Implementation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.StringTokenizer;
+import java.util.*;
 
 
 /**
@@ -19,36 +16,32 @@ import java.util.StringTokenizer;
  * [구현, 덱]
  * 배열의 앞, 뒤에 해당하는 숫자를 지워야 하는 작업이므로  deque를 사용한다.
  */
-class Main_5430_Gold5 {
+class Main {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
-    private static int[] arr;
 
     public static void main(String[] args) throws IOException {
+
         int test = Integer.parseInt(br.readLine());
+
         for (int t = 0; t < test; t++) {
-            String action = br.readLine();
-            Deque<Integer> dq = new ArrayDeque<>();
+
+            char[] action = br.readLine().toCharArray();
+            ArrayDeque<Integer> dq = new ArrayDeque<>();
+
             int size = Integer.parseInt(br.readLine());
-            arr = new int[size];
-            if(size != 0) {
-                String arrList = br.readLine();
-                arrList = arrList.substring(1, arrList.length() - 1);
-                st = new StringTokenizer(arrList, ",");
-                int index = 0;
-                do {
-                    arr[index] = Integer.parseInt(st.nextToken());
-                    dq.addLast(arr[index++]);
-                } while (st.hasMoreTokens());
+
+            for(int i=0; i<size; i++) {
+                dq.addLast(Integer.parseInt(st.nextToken()));
             }
 
             boolean reverse = false;
             boolean isError = false;
-            for (int i = 0; i < action.length(); i++) {
-                char c = action.charAt(i);
+            for (int i = 0; i < action.length; i++) {
+                char c = action[i];
                 if(c == 'R') reverse = !reverse;
                 else if(c == 'D') {
                     if(!delete(dq, reverse)) {
@@ -56,22 +49,13 @@ class Main_5430_Gold5 {
                         break;
                     };
                 }
-
             }
 
             if(isError) sb.append("error").append("\n");
-            else {
-                int[] result = new int[dq.size()];
-                int index =0;
-                if(!reverse) {
-                    while(!dq.isEmpty()) result[index++] = dq.pollFirst();
-                } else {
-                    while(!dq.isEmpty()) result[index++] = dq.pollLast();
-                }
-                sb.append(Arrays.toString(result)).append("\n");
-            }
+            else makePrintString(dq, !reverse);
+
         }
-        System.out.println(sb);
+        System.out.println(sb.toString());
 
     }
 
@@ -80,6 +64,28 @@ class Main_5430_Gold5 {
         if(reverse) dq.pollLast();
         else dq.pollFirst();
         return true;
+    }
+    public static void makePrintString(ArrayDeque<Integer> deque, boolean isRight) {
+
+        sb.append('[');	// 여는 대괄호 먼저 StringBuilder에 저장
+        if(deque.size() > 0) {	//만약 출력 할 원소가 한 개 이상일 경우
+            if(isRight) {	// 정방향일경우
+                sb.append(deque.pollFirst());	// 먼저 첫 번째 원소를 넘겨준다.
+                // 그 다음 원소부터 반점을 먼저 넘겨준 후 덱의 원소를 하나씩 뽑아 넘긴다.
+                while(!deque.isEmpty()) {
+                    sb.append(',').append(deque.pollFirst());
+                }
+            }
+            else {	// 역방향일경우
+                sb.append(deque.pollLast());	// 먼저 뒤에서부터 첫 번째 원소를 넘겨준다.
+                // 그 다음 원소부터 반점을 먼저 넘겨준 후 덱의 원소를 뒤에서부터 하나씩 뽑아 넘긴다.
+                while(!deque.isEmpty()) {
+                    sb.append(',').append(deque.pollLast());
+                }
+            }
+        }
+
+        sb.append(']').append('\n');	// 닫는 대괄호 및 개행으로 마무리
     }
 
 
