@@ -1,7 +1,9 @@
+package Implementation;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.StringTokenizer;
 
 
 /*
@@ -27,7 +29,7 @@ import java.util.*;
     - 바람이 불면 미세먼지가 바람의 방향대로 모두 한칸씩 이동
     - 공기청정기에서 부는 바람은 미세먼지가 없음, 공기청정기로 들어간 미세먼지는 모두 정화
  */
-class Main {
+class Main_17144_Gold4 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
