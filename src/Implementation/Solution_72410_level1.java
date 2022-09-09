@@ -1,4 +1,4 @@
-/*
+package Implementation;/*
 
 아이디 정제 과정
 1. 모든 대문자 -> 소문자로 변환
@@ -12,9 +12,7 @@
  */
 
 
-import java.util.Map;
-
-class Solution {
+class Solution_72410_level1 {
     public String solution(String new_id) {
         String answer = "";
         String id = new_id;
