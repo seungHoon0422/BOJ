@@ -1,6 +1,8 @@
+package BruteForce;
+
 import java.util.*;
 
-class Solution {
+class Solution_72411_level2 {
     private HashMap<String, Integer> menus;
 
     public String[] solution(String[] orders, int[] course) {
@@ -9,7 +11,7 @@ class Solution {
         for(int i=0; i<orders.length; i++) {
             char[] chars = orders[i].toCharArray();
             Arrays.sort(chars);
-            combination(0, "", chars);
+            searchMenu(0, "", chars);
         }
 
 
@@ -46,7 +48,7 @@ class Solution {
         return answer;
     }
 
-    private void combination(int index, String menu, char[] chars) {
+    private void searchMenu(int index, String menu, char[] chars) {
 
         if(index == chars.length) {
             if(!menus.containsKey(menu))
@@ -55,8 +57,8 @@ class Solution {
             return;
         }
 
-        combination(index+1, menu, chars);
-        combination(index+1, menu+chars[index], chars);
+        searchMenu(index+1, menu, chars);
+        searchMenu(index+1, menu+chars[index], chars);
 
 
     }
