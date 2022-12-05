@@ -1,13 +1,14 @@
+package DataStructure;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Stack;
 
-public class Main {
+public class Main_4949_Silver4 {
 
-    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private static StringBuilder sb = new StringBuilder();
+    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static final StringBuilder sb = new StringBuilder();
     private static final String YES = "yes";
     private static final String NO = "no";
 
