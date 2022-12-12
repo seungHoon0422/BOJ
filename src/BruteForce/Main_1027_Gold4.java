@@ -1,9 +1,11 @@
+package BruteForce;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main {
+public class Main_1027_Gold4 {
 
 
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
