@@ -1,10 +1,19 @@
+package BruteForce;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+/**
+ *
+ * right var의 최대값 설정에서 시간이 오래 걸렸다.
+ * 문제에서 주어진 조건은 500,000이었지만
+ * 만약 버튼이 9를 제외하고 모두 고장난 겨웅에는 999,999를 선택해야하는 경우가 발생하기 때문에
+ * 최대값을 999,999까지 잡아줘야 성공한다.
+ *
+ */
+public class Main_1107_Gold5 {
 
 
     private static final int BUTTON_COUNT = 10;
