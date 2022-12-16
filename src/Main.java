@@ -1,81 +1,84 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 public class Main {
 
-    // --------------- common ----------------//
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
-
-    //----------------- private --------------//
-
-    private static int N;
-    private static int start, destination;
-    private static Map<Integer, List<Integer>> map;
-
+    private static int R, C;
+    private static char[][] map;
 
     public static void main(String[] args) throws IOException {
 
-        init();
-        int chonsu = findChon();
-        System.out.println(chonsu);
+        st = new StringTokenizer(br.readLine(), " ");
+        R = Integer.parseInt(st.nextToken());
+        C = Integer.parseInt(st.nextToken());
 
+        map = new char[R][C];
+        for(int i=0; i<R; i++) {
+            map[i] = br.readLine().toCharArray();
+        }
 
-    }
-
-    private static int findChon() {
-
-        int distance = 0;
-        boolean[] visited = new boolean[N+1];
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{start, 0});
-        visited[start] = true;
-
-        while (!queue.isEmpty()) {
-            int[] front = queue.poll();
-
-            for(int neighbor : map.get(front[0])) {
-                if(visited[neighbor]) continue;
-
-                if(neighbor == destination)
-                    return front[1] + 1;
-                else {
-                    queue.offer(new int[]{neighbor, front[1] + 1});
-                    visited[neighbor] = true;
+        int answer = 0;
+        for(int i=0; i<R; i++) {
+            for(int j=0; j<C; j++) {
+                // 육지인 경우 bfs 진행
+                if(map[i][j] == 'L') {
+                    answer = Math.max(answer, bfs(i,j));
                 }
             }
         }
 
-        return -1;
+        System.out.println(answer);
     }
 
-    private static void init() throws IOException {
 
-        N = Integer.parseInt(br.readLine());
-        st = new StringTokenizer(br.readLine(), " ");
-        start = Integer.parseInt(st.nextToken());
-        destination = Integer.parseInt(st.nextToken());
+    private static final int[] dr = {1, -1, 0, 0};
+    private static final int[] dc = {0, 0, 1, -1};
+    private static int bfs(int r, int c) {
 
-        map = new HashMap<>();
+        Queue<Position> queue = new LinkedList<>();
+        boolean[][] visited = new boolean[R][C];
+        queue.offer(new Position(r, c,0));
+        visited[r][c] = true;
+        int distance = 0;
+        while (!queue.isEmpty()) {
 
-        for(int i=1; i<=N; i++) {
-            map.put(i, new ArrayList<>());
+            Position position = queue.poll();
+            for(int d=0; d<4; d++) {
+                assert position != null;
+                int nr = position.r + dr[d];
+                int nc = position.c + dc[d];
+                if(nr<0 || nr >=R || nc<0 || nc>=C) continue;
+                if(visited[nr][nc]) continue;
+                if(map[nr][nc] != 'L') continue;
+
+                visited[nr][nc] = true;
+                queue.offer(new Position(nr, nc, position.distance + 1));
+                distance = Math.max(distance, position.distance + 1);
+
+
+            }
         }
-
-        int M = Integer.parseInt(br.readLine());
-        while(M-->0) {
-            st = new StringTokenizer(br.readLine(), " ");
-            int parent = Integer.parseInt(st.nextToken());
-            int child = Integer.parseInt(st.nextToken());
-
-            map.get(child).add(parent);
-            map.get(parent).add(child);
-
-        }
-
-
-
+        return distance;
     }
+
+    public static int getDistance(int r1, int c1, int r2, int c2) {
+        return Math.abs(r1 - r2) + Math.abs(c1 - c2);
+    }
+    static class Position {
+        int r, c, distance;
+
+        public Position(int r, int c, int distance) {
+            this.r = r;
+            this.c = c;
+            this.distance = distance;
+        }
+    }
+
+
 }
