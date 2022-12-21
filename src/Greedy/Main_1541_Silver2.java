@@ -11,6 +11,8 @@ public class Main_1541_Silver2 {
     static StringTokenizer st;
 
 
+
+
     public static void main(String[] args) throws IOException {
 
         int sum = Integer.MAX_VALUE;	// 초기 상태 여부 확인을 위한 값으로 설정
