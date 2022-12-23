@@ -1,76 +1,38 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
-
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
+    public static void main(String[] args) throws Exception {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private static StringTokenizer st;
+        int N = Integer.parseInt(in.readLine());
+        int[] p = new int[N];
+        int[] order = new int[N];
+        int[] cards = new int[N];
 
-    private static int N;
-    private static int[] P, S, cards;
-    private static Map<Integer, Set<Integer>> cardMap;
-    public static void main(String[] args) throws IOException {
+        StringTokenizer st = new StringTokenizer(in.readLine());
+        for(int i=0;i<N;i++) p[i] = Integer.parseInt(st.nextToken());
 
-        N = Integer.parseInt(br.readLine());
-        cardMap = new HashMap<>();
-        cardMap.put(0, new HashSet<>());
-        cardMap.put(1, new HashSet<>());
-        cardMap.put(2, new HashSet<>());
-
-        cards = new int[N];
-        P = new int[N];
-        S = new int[N];
-
-        st = new StringTokenizer(br.readLine(), " ");
-        for(int i=0; i<N; i++) {
+        st = new StringTokenizer(in.readLine());
+        for(int i=0;i<N;i++) {
+            order[Integer.parseInt(st.nextToken())] = i;
             cards[i] = i%3;
-            P[i] = Integer.parseInt(st.nextToken());
-//            cardMap.get(i%3).add(P[i]);
         }
 
-        st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < N; i++) {
-            S[i] = Integer.parseInt(st.nextToken());
+        int[] compare = cards.clone();
+        int[] next = new int[N];
+
+        int result = 0;
+        while(!Arrays.equals(cards,p) && !(result !=0 && Arrays.equals(cards, compare))) {
+            for(int j=0;j<N;j++) next[order[j]] = cards[j];
+
+            cards = next.clone();
+            result++;
         }
 
-        for(int i=0; i<N; i++) {
-            if(checkCards()) {
-                System.out.println(i);
-                return;
-            }
-            swap();
-        }
-
-
-        if(checkCards()) {
-            System.out.println(N);
-        } else {
-            System.out.println(-1);
-
-        }
-
-
+        if(result !=0 && Arrays.equals(cards, compare)) System.out.println(-1);
+        else System.out.println(result);
     }
-
-    private static boolean checkCards() {
-
-        for(int i=0; i<N; i++) {
-            if(!cardMap.get(i%3).contains(cards[i]))
-                return false;
-        }
-        return true;
-    }
-
-    private static void swap() {
-        int[] newCards = new int[N];
-        for(int i=0; i<N; i++) {
-            newCards[S[i]] = cards[i];
-        }
-        cards = newCards;
-
-    }
-
 }
