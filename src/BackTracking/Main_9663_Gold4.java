@@ -1,11 +1,12 @@
+package BackTracking;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+public class Main_9663_Gold4 {
 
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
     private static int N, answer;
     private static int[] col;
     public static void main(String[] args) throws IOException {
@@ -18,7 +19,6 @@ public class Main {
             col[i] = 1;
         nQueen(0);
         System.out.println(answer);
-
     }
 
     /**
@@ -37,8 +37,6 @@ public class Main {
                 nQueen(row+1);
             }
         }
-
-
     }
 
     private static boolean isPossibleCol(int row) {
@@ -48,5 +46,4 @@ public class Main {
         }
         return true;
     }
-
 }
