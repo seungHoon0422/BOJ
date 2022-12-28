@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
  *
  */
 
+
 public class Main_1057_Silver3 {
 
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
