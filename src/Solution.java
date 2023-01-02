@@ -1,63 +1,65 @@
 import java.util.*;
 
+
+/**
+ *
+ * 1번 : RT
+ * 2번 : CF
+ * 3번 : JM
+ * 4번 : AN
+ *
+ *
+ */
+
 class Solution {
-    private HashMap<String, Integer> menus;
 
-    public String[] solution(String[] orders, int[] course) {
-        menus = new HashMap<>();
+    private static final char[] charArr = {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'};
+    private static Map<Character, Integer> map;
 
-        for(int i=0; i<orders.length; i++) {
-            char[] chars = orders[i].toCharArray();
-            Arrays.sort(chars);
-            combination(0, "", chars);
+
+    public String solution(String[] survey, int[] choices) {
+        String answer = "";
+        map = new HashMap<>();
+        for (char c : charArr) {
+            map.put(c, 0);
         }
 
-
-        Map<Integer, ArrayList<String>> results = new HashMap<>();
-
-        for (String key : menus.keySet()) {
-            if(menus.get(key) < 2) continue;
-            if(!results.containsKey(key.length())) results.put(key.length(), new ArrayList<>());
-
-            // 첫 메뉴
-            if(results.get(key.length()).size() == 0 ) results.get(key.length()).add(key);
-            else {
-                // 메뉴가 이미 존재하는 경우
-                String mn = results.get(key.length()).get(0);
-                int count = menus.get(mn);
-
-                if (menus.get(key) == count) {
-                    results.get(key.length()).add(key);
-                } else if(menus.get(key) > count) {
-                    results.put(key.length(), new ArrayList<>());
-                    results.get(key.length()).add(key);
-                }
-            }
+        for(int i=0; i<survey.length; i++) {
+            countSurvey(survey[i], choices[i]);
         }
 
-        ArrayList<String> result = new ArrayList<>();
-        for(int i=0; i< course.length; i++) {
-            if(results.containsKey(course[i])){
-                result.addAll(results.get(course[i]));
-            }
-        }
-        Collections.sort(result);
-        String[] answer = result.toArray(new String[0]);
+        answer += setType('R', 'T');
+        answer += setType('C', 'F');
+        answer += setType('J', 'M');
+        answer += setType('A', 'N');
+
+
         return answer;
     }
 
-    private void combination(int index, String menu, char[] chars) {
+    private String setType(char ch1, char ch2) {
+        int choiceCh1 = map.get(ch1);
+        int choiceCh2 = map.get(ch2);
 
-        if(index == chars.length) {
-            if(!menus.containsKey(menu))
-                menus.put(menu, 0);
-            menus.put(menu, menus.get(menu) + 1);
-            return;
+        if(choiceCh1 == choiceCh2) {
+            return ch1 < ch2 ? ch1+"" : ch2+"";
+        } else {
+            if(choiceCh1 >  choiceCh2)
+                return ch1 + "";
+            else
+                return ch2 + "";
         }
+    }
 
-        combination(index+1, menu, chars);
-        combination(index+1, menu+chars[index], chars);
+    private void countSurvey(String survey, int choice) {
+        if(choice < 4)
+            map.put(survey.charAt(0), map.get(survey.charAt(0)) + Math.abs(choice - 4));
+        else
+            map.put(survey.charAt(1), map.get(survey.charAt(1)) + Math.abs(choice - 4));
+
 
 
     }
+
+
 }
