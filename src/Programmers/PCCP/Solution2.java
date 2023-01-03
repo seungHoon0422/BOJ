@@ -1,6 +1,6 @@
-import java.util.*;
+package Programmers.PCCP;
 
-class Solution {
+class Solution2 {
 
     private static int answer;
     public int solution(int[][] ability) {
