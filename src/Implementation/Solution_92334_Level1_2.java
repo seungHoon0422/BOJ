@@ -1,6 +1,11 @@
-import java.util.*;
+package Implementation;
 
-class Solution {
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+class Solution_92334_Level1_2 {
 
     private static Map<String, Set<String>> callee;
     private static Map<String, Integer> caller;
