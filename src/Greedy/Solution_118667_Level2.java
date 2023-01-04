@@ -1,4 +1,7 @@
-import java.util.*;
+package Greedy;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*
 
@@ -7,7 +10,7 @@ import java.util.*;
 1 ≤ queue1의 원소, queue2의 원소 ≤ 109
  */
 
-class Solution {
+class Solution_118667_Level2 {
     public int solution(int[] queue1, int[] queue2) {
 
         Queue<Integer> leftQueue = new LinkedList<>();
