@@ -1,4 +1,9 @@
-import java.util.*;
+package Implementation;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * 입차되어있는 차량 리스트를 map으로 확인
@@ -6,7 +11,7 @@ import java.util.*;
  *
  *
  */
-class Solution {
+class Solution_92341_level2_2 {
 
     private static Map<Integer, Integer> inTime;
     private static Map<Integer, Integer> accumulateTime;
