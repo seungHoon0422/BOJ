@@ -1,5 +1,4 @@
-import java.sql.Array;
-import java.util.Arrays;
+package BackTracking;
 
 /**
  *
@@ -10,7 +9,7 @@ import java.util.Arrays;
  *
  */
 
-class Solution {
+class Solution_92342_Level2 {
 
     private static int diffScore;
     private static int[] answer;
