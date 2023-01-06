@@ -1,6 +1,8 @@
-import java.util.*;
+package Implementation;
 
-class Solution {
+import java.util.StringTokenizer;
+
+class Solution_92335_level2_2 {
 
     private static String number;
     public int solution(int n, int k) {
