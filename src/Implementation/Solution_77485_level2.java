@@ -1,6 +1,6 @@
-import java.util.*;
+package Implementation;
 
-class Solution {
+class Solution_77485_level2 {
     private static int row, col;
     private static int[][] board;
     public int[] solution(int rows, int columns, int[][] queries) {
