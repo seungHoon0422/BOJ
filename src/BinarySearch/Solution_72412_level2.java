@@ -1,3 +1,5 @@
+package BinarySearch;
+
 import java.util.*;
 
 /**
@@ -8,7 +10,7 @@ import java.util.*;
  * 점수 : 1 이상 100,000 이하인 자연수
  */
 
-class Solution {
+class Solution_72412_level2 {
 
     private static Map<String, Integer>[] types;
     private static Map<String, List<Integer>> info;
