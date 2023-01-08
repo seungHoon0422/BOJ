@@ -1,6 +1,8 @@
+package Implementation;
+
 import java.util.*;
 
-class Solution {
+class Solution_72411_level2 {
 
     private static Set<Integer> courseSet;
 
