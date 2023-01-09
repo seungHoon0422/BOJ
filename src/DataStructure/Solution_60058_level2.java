@@ -1,6 +1,8 @@
-import java.util.*;
+package DataStructure;
 
-class Solution {
+import java.util.Stack;
+
+class Solution_60058_level2 {
     public String solution(String p) {
         String answer = "";
         answer = findRightString(p);
@@ -27,7 +29,7 @@ class Solution {
             String newU = "";
             for(int i=1; i<u.length()-1; i++) {
                 if(u.charAt(i) == '(') newU += ')';
-                else newU += '(';
+                else newU += '(';   
             }
             return '(' + findRightString(v) + ')' + newU;
         }
