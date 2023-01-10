@@ -1,6 +1,6 @@
-import java.util.*;
+package String;
 
-class Solution {
+class Solution_60057_level2 {
     public int solution(String s) {
         int answer = s.length();
         for(int i=s.length()/2; i>=1; i--) {
