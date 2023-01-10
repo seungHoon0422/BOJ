@@ -1,7 +1,10 @@
-import java.util.*;
+package DataStructure;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
-class Solution {
+class Solution_42890_level2 {
     private static String[][] relation;
     private static Set<String> answerSet;
     private static int columns;
