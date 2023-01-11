@@ -35,13 +35,9 @@ class Solution_42890_level2 {
             }
             answerSet.add(key);
             return;
-
         }
         findPossibleKey(index+1, limit, key);
         findPossibleKey(index+1, limit, key+index);
-
-
-
 
     }
 

@@ -1,7 +1,12 @@
-import java.util.*;
+package Implementation;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
-class Solution {
+class Solution_42888_level2 {
 
     private static Map<String, String> dns;
     private static List<Chat> chatRoom;
