@@ -2,62 +2,56 @@ import java.util.*;
 
 
 class Solution {
+    public String solution(int n, int t, int m, int p) {
+        String answer = "";
 
-    private static Map<String, String> dns;
-    private static List<Chat> chatRoom;
-    public String[] solution(String[] records) {
-        String[] answer = {};
+        int number = 0;
+        int index = 1;
+        while(t > 0) {
+            String convertString = change(number, n);
+            for(int i=0; i<convertString.length(); i++) {
+                char ch = convertString.charAt(i);
 
-        dns = new HashMap<>();
-        chatRoom = new ArrayList<>();
+                // t번 모두 출력한 경우
+                if( t == 0 ) break;
 
-        for (String record : records) {
-
-            String[] recordSplit = record.split(" ");
-
-            String state = recordSplit[0];
-            String uid = recordSplit[1];
-
-            if ("Enter".equals(state)) {
-                String name = recordSplit[2];
-                if (!dns.containsKey(uid)) {
-                    dns.put(uid, name);
-                } else {
-                    dns.put(uid, name);
+                // 튜브의 순서인 경우
+                if(index == p) {
+                    answer += ch;
+                    t--;
                 }
-                chatRoom.add(new Chat(uid, state));
+                if(index == m) index = 0;
 
-            } else if ("Leave".equals(state)) {
-                chatRoom.add(new Chat(uid, state));
-            } else if ("Change".equals(state)) {
-                String name = recordSplit[2];
-                dns.put(uid, name);
+                index++;
+
             }
+            number++;
+
         }
 
-        answer = new String[chatRoom.size()];
-        int index = 0;
-
-        for (Chat chat : chatRoom) {
-            String output = dns.get(chat.uid) + "님이 ";
-            if("Enter".equals(chat.state))
-                output += "들어왔습니다.";
-            else
-                output += "나갔습니다.";
-            answer[index++] = output;
-        }
 
         return answer;
     }
 
-    static class Chat {
-        String uid;
-        String state;
 
-        public Chat(String uid, String state) {
-            this.uid = uid;
-            this.state = state;
+    private String change(int number, int n) {
+
+        String result = "";
+        if(number == 0) return "0";
+        while(number > 0) {
+            int mod = number % n;
+            if(mod < 10) result = mod + result;
+            else {
+                if(mod == 10) result = 'A' + result;
+                else if(mod == 11) result = 'B' + result;
+                else if(mod == 12) result = 'C' + result;
+                else if(mod == 13) result = 'D' + result;
+                else if(mod == 14) result = 'E' + result;
+                else if(mod == 15) result = 'F' + result;
+            }
+            number /= n;
         }
-    }
+        return result;
 
+    }
 }
