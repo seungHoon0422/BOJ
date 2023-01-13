@@ -1,75 +1,47 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+
+ 문제요약:
+ 각 알파벳에 대한 색인번호가 주어지고,
+ 문자열이 주어졌을 때 색인번호 안에있는 가장 큰 문자열을 파악하고,
+ 그다음문자가 없을때에는 해당 색인번호를 출력하고,
+ temp에 저장되어있는 문자열을 색인 번호에 등록
 
 
+
+ */
 class Solution {
+    private HashMap<String, Integer> map;
 
-    public String[] solution(String[] files) {
-        String[] answer = {};
-        List<File> fileList = new ArrayList<>();
+    public int[] solution(String msg) {
+        int[] answer = {};
+        ArrayList<Integer> result = new ArrayList<>();
+        char[] arr = msg.toCharArray();
 
-        for (String file : files) {
-            fileList.add(new File(file));
+        map = new HashMap<String, Integer>();
+        for(int i=1; i<=26; i++){
+            map.put((char)('A'+i-1)+"", i);
         }
-        Collections.sort(fileList);
-        answer = new String[files.length];
-        for (int i = 0; i < fileList.size(); i++) {
-            answer[i] = fileList.get(i).original;
+        int number = 27;
+        System.out.println(map.keySet().toString());
+        String tmp = "";
+        for(char c : arr) {
+            tmp += c;
+            if(map.containsKey(tmp)) {
+                result.add(map.get(tmp));
+                continue;
+            }
+            else {
+                result.add(map.get(tmp.substring(0,tmp.length()-1)));
+                map.put(tmp, number++);
+                tmp = "";
+            }
         }
-
+        if(tmp.length()!=0) result.add(map.get(tmp));
+        answer = new int[result.size()];
+        for(int i=0; i<result.size(); i++) answer[i] = result.get(i);
         return answer;
     }
-
-
-    static class File implements Comparable<File> {
-        String original;
-        String head, numberString;
-        int number;
-
-        public File(String original) {
-            this.original = original;
-            seperateOriginal(original);
-        }
-
-        private void seperateOriginal(String original) {
-
-            this.head = "";
-            this.numberString = "";
-            int index = 0;
-
-            // find head
-            while (index < original.length()) {
-                char ch = original.charAt(index);
-                if (!('0' <= ch && ch <= '9')) {
-                    this.head += ch;
-                    index++;
-                } else break;
-            }
-
-            // find number
-            int numberCount = 0;
-            while (index < original.length()) {
-                char ch = original.charAt(index);
-                if ('0' <= ch && ch <= '9') {
-                    this.numberString += ch;
-                    index++;
-                    if(this.numberString.length() >= 5) {
-                        break;
-                    }
-                } else break;
-            }
-            this.head = this.head.toLowerCase();
-            this.number = Integer.parseInt(numberString);
-        }
-
-        @Override
-        public int compareTo(File file) {
-            int headCompare = this.head.compareTo(file.head);
-            if(headCompare == 0)
-                return this.number - file.number;
-            return headCompare;
-        }
-    }
 }
-
-
-
