@@ -1,4 +1,4 @@
-import java.util.*;
+package Implementation;
 
 /**
  *
@@ -9,7 +9,7 @@ import java.util.*;
  *
  *
  */
-class Solution {
+class Solution_17683_level2 {
 
     private static String musicName;
     private static int musicTime;
