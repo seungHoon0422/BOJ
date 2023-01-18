@@ -1,7 +1,12 @@
-import java.util.*;
+package DataStructure;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
-class Solution {
+class Solution_17680_level2 {
 
     private static int maxSize;
     private static Set<String> cacheSet;
