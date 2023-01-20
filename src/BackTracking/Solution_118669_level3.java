@@ -1,4 +1,9 @@
-import java.util.*;
+package BackTracking;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 출입구, 쉼터, 산봉우리
@@ -12,7 +17,7 @@ import java.util.*;
  * intensity가 최소가 되는 등산코스가 여러 개라면
  * 그중 산봉우리의 번호가 가장 낮은 등산코스를 선택
  */
-class Solution {
+class Solution_118669_level3 {
 
 //    private static int[][] weight;
     private static List<int[]>[] weight;
@@ -21,7 +26,6 @@ class Solution {
     private static Set<Integer> gateSet;
     private static boolean[] visited;
 
-    static final int INF = 1000000000;
 
     public int[] solution(int n, int[][] paths, int[] gates, int[] summits) {
         int[] answer = {Integer.MAX_VALUE, Integer.MAX_VALUE};
@@ -30,7 +34,7 @@ class Solution {
         for (int gate : gates) {
             visited = new boolean[n+1];
             visited[gate] = true;
-            dfs(gate, 0);
+            dfs(gate, Integer.MAX_VALUE);
             visited[gate] = false;
         }
 
@@ -59,10 +63,22 @@ class Solution {
             // 출입구는 패스
             int i = path[0];
             if(gateSet.contains(i)) continue;
+            if(path[1] == 0) continue; // 길이 없는 경우
             if(visited[i]) continue; // 방문한 쉼터인 경우
-            int nextIntensity = Math.max(intensity, path[1]);
+            int nextIntensity;
 
-            if(minCost[i] <= nextIntensity) continue;
+            if(intensity == Integer.MAX_VALUE) // 출발지점 시작
+                nextIntensity = path[1];
+            else
+                nextIntensity = Math.max(minCost[gate], path[1]);
+
+//            if(minCost[i] == Integer.MAX_VALUE) {
+//                minCost[i] = nextIntensity;
+//            } else {
+//                if(minCost[i] < nextIntensity)
+//            }
+//
+            if(! (minCost[i] == Integer.MAX_VALUE) && minCost[i] < nextIntensity) continue;
             minCost[i] = nextIntensity;
 
             visited[i] = true;
@@ -89,7 +105,7 @@ class Solution {
 
         // init minCost
         for (int i = 0; i < minCost.length; i++) {
-            minCost[i] = INF;
+            minCost[i] = Integer.MAX_VALUE;
         }
 
         // init summit set
