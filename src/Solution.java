@@ -23,6 +23,7 @@ class Solution {
 
     static final int INF = 1000000000;
 
+
     public int[] solution(int n, int[][] paths, int[] gates, int[] summits) {
         int[] answer = {Integer.MAX_VALUE, Integer.MAX_VALUE};
 
