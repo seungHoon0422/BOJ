@@ -1,10 +1,10 @@
+package graph;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
 
 
-
-public class Main {
+public class Main_1039_Gold3 {
 
     static String number;
     static int K, answer;
