@@ -1,11 +1,12 @@
-import javax.naming.PartialResultException;
+package graph;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
 
-public class Main {
+public class Main_1043_Gold4 {
 
     static int N, M, answer;
     static boolean[] knows;
