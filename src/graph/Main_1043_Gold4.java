@@ -31,6 +31,8 @@ public class Main_1043_Gold4 {
             knows[person] = true;
         }
 
+
+
         for(int i=0; i<M; i++) {
             st = new StringTokenizer(br.readLine());
             count = Integer.parseInt(st.nextToken());
