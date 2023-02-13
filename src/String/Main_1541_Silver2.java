@@ -1,10 +1,13 @@
+package String;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class Main {
+public class Main_1541_Silver2 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
