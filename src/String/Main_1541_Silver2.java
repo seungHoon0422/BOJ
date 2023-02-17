@@ -42,6 +42,7 @@ public class Main_1541_Silver2 {
 
 
 
+
         int answer = number.get(0);
         while(number.size() > 1) {
             answer -= number.get(1);
