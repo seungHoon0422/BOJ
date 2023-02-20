@@ -31,6 +31,7 @@ public class Main_1541_Silver2 {
 
         int index = 0;
 
+
         while(index < operator.size()) {
             if(operator.get(index) == '-') index++;
             else {
