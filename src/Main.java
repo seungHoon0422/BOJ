@@ -6,42 +6,30 @@ import java.util.*;
 
 public class Main {
 
+    static StringTokenizer st;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+    static int N, M;
+    static int[][] price;
+    static int answer;
     public static void main(String[] args) throws IOException {
 
-        String input = br.readLine();
-        List<Integer> number = new ArrayList<>();
-        List<Character> operator = new ArrayList<>();
+        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        price = new int[M][2];
+        answer = Integer.MAX_VALUE;
+        int count = N/6;
+        if((N%6) != 0) count++;
 
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<input.length(); i++) {
-            if(input.charAt(i) == '+' || input.charAt(i) == '-') {
-                number.add(Integer.parseInt(sb.toString()));
-                operator.add(input.charAt(i));
-                sb = new StringBuilder();
-            } else {
-                sb.append(input.charAt(i));
-            }
-        }
-        number.add(Integer.parseInt(sb.toString()));
-
-        int index = 0;
-
-        while(index < operator.size()) {
-            if(operator.get(index) == '-') index++;
-            else {
-                number.set(index, number.get(index) + number.get(index+1));
-                number.remove(index+1);
-                operator.remove(index);
-            }
+        for(int i=0; i<M; i++) {
+            st = new StringTokenizer(br.readLine());
+            price[i][0] = Integer.parseInt(st.nextToken());
+            price[i][1] = Integer.parseInt(st.nextToken());
+            answer = Math.min(answer, price[i][0] * count);
+            answer = Math.min(answer, price[i][1] * N);
         }
 
-        int answer = number.get(0);
-        while(number.size() > 1) {
-            answer -= number.get(1);
-            number.remove(1);
-        }
 
         System.out.println(answer);
     }
