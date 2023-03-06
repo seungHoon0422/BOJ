@@ -6,31 +6,72 @@ import java.util.*;
 
 public class Main {
 
-    static StringTokenizer st;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    static StringBuilder sb = new StringBuilder();
+    static int N, R, Q;
+    static int subtreeCount;
+    static ArrayList<Integer>[] graph;
+    static ArrayList<Integer>[] tree;
+    static int[] subtree;
+    static int[] parent;
 
-    static int N, M;
-    static int[][] price;
-    static int answer;
     public static void main(String[] args) throws IOException {
-
         st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        price = new int[M][2];
-        answer = Integer.MAX_VALUE;
-        int count = N/6;
-        if((N%6) != 0) count++;
+        R = Integer.parseInt(st.nextToken());
+        Q = Integer.parseInt(st.nextToken());
 
-        for(int i=0; i<M; i++) {
+        subtree = new int[N+1];
+        parent = new int[N+1];
+        graph = new ArrayList[N+1];
+        tree = new ArrayList[N+1];
+
+        for(int i=0; i<=N; i++) {
+            graph[i] = new ArrayList<>();
+            tree[i] = new ArrayList<>();
+        }
+        for(int i=0; i<N-1; i++) {
             st = new StringTokenizer(br.readLine());
-            price[i][0] = Integer.parseInt(st.nextToken());
-            price[i][1] = Integer.parseInt(st.nextToken());
-            answer = Math.min(answer, price[i][0] * count);
-            answer = Math.min(answer, price[i][1] * N);
+            int nodeA = Integer.parseInt(st.nextToken());
+            int nodeB = Integer.parseInt(st.nextToken());
+            graph[nodeA].add(nodeB);
+            graph[nodeB].add(nodeA);
+        }
+        parent[R] = -1;
+        setDirection(R, -1);
+        countSubtreeNodes(R);
+
+        for(int i=0; i<Q; i++) {
+            int subtreeRoot = Integer.parseInt(br.readLine());
+            sb.append(subtree[subtreeRoot]).append('\n');
         }
 
 
-        System.out.println(answer);
+        System.out.println(sb);
+
+
     }
+
+    public static void setDirection(int curNode, int p) {
+
+        for(int node : graph[curNode]) {
+            if(node != p) {
+                tree[curNode].add(node);
+                parent[node] = curNode;
+                setDirection(node, curNode);
+            }
+        }
+    }
+    public static void countSubtreeNodes(int curNode) {
+        subtree[curNode] = 1;
+
+        for(int node : tree[curNode]) {
+            countSubtreeNodes(node);
+            subtree[curNode] += subtree[node];
+        }
+    }
+
+
+
 }
