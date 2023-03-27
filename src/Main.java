@@ -9,69 +9,55 @@ public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
-    static int N, R, Q;
-    static int subtreeCount;
-    static ArrayList<Integer>[] graph;
-    static ArrayList<Integer>[] tree;
-    static int[] subtree;
-    static int[] parent;
-
+//    static List<Integer> queue;
+    static Integer[] queue = new Integer[2000000];
+    static int front, back;
     public static void main(String[] args) throws IOException {
-        st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        R = Integer.parseInt(st.nextToken());
-        Q = Integer.parseInt(st.nextToken());
-
-        subtree = new int[N+1];
-        parent = new int[N+1];
-        graph = new ArrayList[N+1];
-        tree = new ArrayList[N+1];
-
-        for(int i=0; i<=N; i++) {
-            graph[i] = new ArrayList<>();
-            tree[i] = new ArrayList<>();
-        }
-        for(int i=0; i<N-1; i++) {
-            st = new StringTokenizer(br.readLine());
-            int nodeA = Integer.parseInt(st.nextToken());
-            int nodeB = Integer.parseInt(st.nextToken());
-            graph[nodeA].add(nodeB);
-            graph[nodeB].add(nodeA);
-        }
-        parent[R] = -1;
-        setDirection(R, -1);
-        countSubtreeNodes(R);
-
-        for(int i=0; i<Q; i++) {
-            int subtreeRoot = Integer.parseInt(br.readLine());
-            sb.append(subtree[subtreeRoot]).append('\n');
-        }
 
 
-        System.out.println(sb);
+        int tc = Integer.parseInt(br.readLine());
+        int front = 0, back = 0;
+        while(tc-- > 0) {
+            String[] input = br.readLine().split(" ");
 
 
-    }
+            if("push".equals(input[0])) {
+                queue[back++] = Integer.parseInt(input[1]);
 
-    public static void setDirection(int curNode, int p) {
+            } else if("pop".equals(input[0])) {
+                if(front == back) errorCase();
+                else {
+                    sb.append(queue[front++]).append("\n");
+                }
+            } else if("size".equals(input[0])) {
+                sb.append(back-front).append("\n");
 
-        for(int node : graph[curNode]) {
-            if(node != p) {
-                tree[curNode].add(node);
-                parent[node] = curNode;
-                setDirection(node, curNode);
+            } else if("empty".equals(input[0])) {
+                if(front == back) sb.append("1\n");
+                else sb.append("0\n");
+
+            } else if("front".equals(input[0])) {
+                if(front == back) errorCase();
+                sb.append(queue[front]).append("\n");
+
+            } else if("back".equals(input[0])) {
+                if(front == back) errorCase();
+                sb.append(queue[back-1]).append("\n");
+
             }
-        }
-    }
-    public static void countSubtreeNodes(int curNode) {
-        subtree[curNode] = 1;
 
-        for(int node : tree[curNode]) {
-            countSubtreeNodes(node);
-            subtree[curNode] += subtree[node];
+
         }
+        System.out.println(sb.toString());
+
+
+
+
     }
 
+    static void errorCase() {
+        sb.append("-1\n");
+    }
 
 
 }
