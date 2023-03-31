@@ -1,10 +1,12 @@
+package graph;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
 
-public class Main {
+public class Main_3055_Gold4 {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
