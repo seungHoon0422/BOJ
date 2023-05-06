@@ -32,110 +32,25 @@ class DataStructureMethods
 
 
     }
+    private static void For() {
 
-    private static void MethodMap() {
+        methodDebug("For");
 
-        Map<Integer, Integer> map = new HashMap<>();
-        Map<Integer, Integer> linkedMap = new LinkedHashMap<>();
-        Map<Integer, Integer> treeMap = new TreeMap<>();
-        Map<Integer, Integer> concurrentHashMap = new ConcurrentHashMap<>();
-
-        for(int i=0; i<10; i++) map.put(i, i*10);
-
-        int size = map.size();
-        Set<Integer> keySet = map.keySet();
-        Collection<Integer> values = map.values();
-        Set<Map.Entry<Integer, Integer>> entrySet = map.entrySet();
-        boolean containsKey = map.containsKey(3);
-        boolean containsValue = map.containsValue(30);
-
-
-        map.remove(5);
-
-        // iterator
-        for (Integer integer : keySet) {
-            integer++;
-        }
-        for (Integer value : values) {
-            value++;
-        }
-        for (Map.Entry<Integer, Integer> entry : entrySet) {
-            Integer integer = entry.getValue();
+        for(int i=0; i<5; i++) {
+            System.out.println(i);
         }
 
+        int[] arr = {1,2,3,4,5};
+        for(int node : arr) {
+            System.out.println(node);
+        }
 
-
+        int index = 0;
+        while(index < arr.length) {
+            System.out.println(arr[index++]);
+        }
     }
 
-    private static void MethodQueue() {
-        methodDebug("Queue");
-
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 1; i < 10; i++) queue.offer(i);
-        System.out.println("queue = " + queue.toString());
-
-
-        System.out.println("queue.peek() = " + queue.peek());;
-        System.out.println("queue.size() = " + queue.size());;
-        System.out.println("queue.isEmpty() = " + queue.isEmpty());;
-        System.out.println("queue.poll() = " + queue.poll());;
-
-
-        seperate();
-        Deque<Integer> deque = new LinkedList<>();
-        for (int i = 1; i < 10; i++) deque.offer(i);
-
-        System.out.println("deque = " + deque);
-        System.out.println("deque.peekFirst() = " + deque.peekFirst());;
-        System.out.println("deque.pollLast() = " + deque.pollLast());;
-        System.out.print("deque.offerFirst(0) = " + deque.offerFirst(0));;
-        System.out.println(" => deque = " + deque);
-        System.out.print("deque.offerLast(0) = " + deque.offerLast(0));;
-        System.out.println(" => deque = " + deque);
-        System.out.print("deque.pollFirst() = " + deque.pollFirst());;
-        System.out.println(" => deque = " + deque);
-        System.out.print("deque.pollFirst() = " + deque.pollFirst());;
-        System.out.println(" => deque = " + deque);
-    }
-
-    private static void MethodStack() {
-
-        methodDebug("Stack");
-        Stack<Integer> stack = new Stack<>();
-        for(int i=1; i<5; i++) stack.push(i);
-        Integer pop = stack.pop();
-        Integer peek = stack.peek();
-        boolean empty = stack.isEmpty();
-        int size = stack.size();
-        boolean contains = stack.contains(3);
-
-
-    }
-
-    private static void MethodList() {
-
-        methodDebug("Method Array List");
-
-        List<Integer> arraylist = new ArrayList<>();
-        List<Integer> linkedlist = new LinkedList<>();
-
-        for (int i = 0; i < 10; i++) arraylist.add(i);
-
-        System.out.println(Arrays.toString(arraylist.toArray()));
-        System.out.println("arraylist.get(3) = " + arraylist.get(3));
-        System.out.println("arraylist.size() = " + arraylist.size());
-        System.out.println("arraylist.add(7) = " + arraylist.add(7));
-        System.out.println(Arrays.toString(arraylist.toArray()));
-        System.out.println("arraylist.contains(5)  : " + arraylist.contains(5));
-        System.out.println("arraylist.indexOf(2) = " + arraylist.indexOf(2));
-        System.out.print("arraylist.remove(0) = " + arraylist.remove(0));
-        System.out.println(" => " + Arrays.toString(arraylist.toArray()));
-        System.out.print("arraylist.set(3, -1) = " + arraylist.set(3, -1));
-        System.out.println(" => " + Arrays.toString(arraylist.toArray()));
-        arraylist.sort((a, b) -> a - b);
-        System.out.println("arraylist.sort((a,b) -> a-b) = " + arraylist.toString());
-
-    }
 
     private static void MethodString() {
 
@@ -173,24 +88,115 @@ class DataStructureMethods
     }
 
 
-    private static void For() {
+    private static void MethodList() {
 
-        methodDebug("For");
+    methodDebug("Method Array List");
 
-        for(int i=0; i<5; i++) {
-            System.out.println(i);
+    List<Integer> arraylist = new ArrayList<>();
+    List<Integer> linkedlist = new LinkedList<>();
+
+    for (int i = 0; i < 10; i++) arraylist.add(i);
+
+    System.out.println(Arrays.toString(arraylist.toArray()));
+    System.out.println("arraylist.get(3) = " + arraylist.get(3));
+    System.out.println("arraylist.size() = " + arraylist.size());
+    System.out.println("arraylist.add(7) = " + arraylist.add(7));
+    System.out.println(Arrays.toString(arraylist.toArray()));
+    System.out.println("arraylist.contains(5)  : " + arraylist.contains(5));
+    System.out.println("arraylist.indexOf(2) = " + arraylist.indexOf(2));
+    System.out.print("arraylist.remove(0) = " + arraylist.remove(0));
+    System.out.println(" => " + Arrays.toString(arraylist.toArray()));
+    System.out.print("arraylist.set(3, -1) = " + arraylist.set(3, -1));
+    System.out.println(" => " + Arrays.toString(arraylist.toArray()));
+    arraylist.sort((a, b) -> a - b);
+    System.out.println("arraylist.sort((a,b) -> a-b) = " + arraylist.toString());
+
+}
+
+
+
+    private static void MethodMap() {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> linkedMap = new LinkedHashMap<>();
+        Map<Integer, Integer> treeMap = new TreeMap<>();
+        Map<Integer, Integer> concurrentHashMap = new ConcurrentHashMap<>();
+
+        for(int i=0; i<10; i++) map.put(i, i*10);
+
+        int size = map.size();
+        Set<Integer> keySet = map.keySet();
+        Collection<Integer> values = map.values();
+        Set<Map.Entry<Integer, Integer>> entrySet = map.entrySet();
+        boolean containsKey = map.containsKey(3);
+        boolean containsValue = map.containsValue(30);
+
+
+        map.remove(5);
+
+        // iterator
+        for (Integer integer : keySet) {
+            integer++;
+        }
+        for (Integer value : values) {
+            value++;
+        }
+        for (Map.Entry<Integer, Integer> entry : entrySet) {
+            Integer integer = entry.getValue();
         }
 
-        int[] arr = {1,2,3,4,5};
-        for(int node : arr) {
-            System.out.println(node);
-        }
 
-        int index = 0;
-        while(index < arr.length) {
-            System.out.println(arr[index++]);
-        }
+
     }
+
+    private static void MethodStack() {
+
+        methodDebug("Stack");
+        Stack<Integer> stack = new Stack<>();
+        for(int i=1; i<5; i++) stack.push(i);
+        Integer pop = stack.pop();
+        Integer peek = stack.peek();
+        boolean empty = stack.isEmpty();
+        int size = stack.size();
+        boolean contains = stack.contains(3);
+
+
+    }
+
+
+    private static void MethodQueue() {
+        methodDebug("Queue");
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 1; i < 10; i++) queue.offer(i);
+        System.out.println("queue = " + queue.toString());
+
+
+        System.out.println("queue.peek() = " + queue.peek());;
+        System.out.println("queue.size() = " + queue.size());;
+        System.out.println("queue.isEmpty() = " + queue.isEmpty());;
+        System.out.println("queue.poll() = " + queue.poll());;
+
+
+        seperate();
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 1; i < 10; i++) deque.offer(i);
+
+        System.out.println("deque = " + deque);
+        System.out.println("deque.peekFirst() = " + deque.peekFirst());;
+        System.out.println("deque.pollLast() = " + deque.pollLast());;
+        System.out.print("deque.offerFirst(0) = " + deque.offerFirst(0));;
+        System.out.println(" => deque = " + deque);
+        System.out.print("deque.offerLast(0) = " + deque.offerLast(0));;
+        System.out.println(" => deque = " + deque);
+        System.out.print("deque.pollFirst() = " + deque.pollFirst());;
+        System.out.println(" => deque = " + deque);
+        System.out.print("deque.pollFirst() = " + deque.pollFirst());;
+        System.out.println(" => deque = " + deque);
+    }
+
+
+
 
 
 
