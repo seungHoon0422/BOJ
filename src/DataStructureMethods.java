@@ -158,6 +158,8 @@ arraylist.indexOf(2) = 2
 arraylist.remove(0) = 0 => [1, 2, 3, 4, 5, 6, 7, 8, 9, 7]
 arraylist.set(3, -1) = 4 => [1, 2, 3, -1, 5, 6, 7, 8, 9, 7]
 arraylist.sort((a,b) -> a-b) = [-1, 1, 2, 3, 5, 6, 7, 7, 8, 9]
+
+
      */
 }
 
