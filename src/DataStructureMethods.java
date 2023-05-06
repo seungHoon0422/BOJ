@@ -36,19 +36,26 @@ class DataStructureMethods
 
         methodDebug("For");
 
-        for(int i=0; i<5; i++) {
-            System.out.println(i);
-        }
+        for(int i=0; i<5; i++) System.out.print(i + " ");
+        System.out.println();
 
         int[] arr = {1,2,3,4,5};
-        for(int node : arr) {
-            System.out.println(node);
-        }
+        for(int node : arr) System.out.print(node + " ");
+        System.out.println();
 
         int index = 0;
-        while(index < arr.length) {
-            System.out.println(arr[index++]);
-        }
+        while(index < arr.length) System.out.print(arr[index++] + " ");
+        System.out.println();
+
+        /*
+--------------------------
+Method Name : For
+--------------------------
+0 1 2 3 4
+1 2 3 4 5
+1 2 3 4 5
+
+         */
     }
 
 
@@ -85,6 +92,32 @@ class DataStructureMethods
         System.out.println("a.replace(\"a\", \"*\") : " + a.replace("a", "*"));
         System.out.println("a.replaceAll(\"[ac]\", \"*\") : " + a.replaceAll("[ac]", "*"));
 
+        /*
+--------------------------
+Method Name : String
+--------------------------
+sample string : 0123456789
+
+length() : 10
+str.charAt(3) : 3
+str.equals("12345") : false
+str.substring(3) : 3456789
+str.substring(3, 6) : 345
+str.split("3") :[012, 456789]
+str.contains("1234") : true
+
+
+str1 = AaaBbbCccDddAaa
+str1.toLowerCase() : aaabbbcccdddaaa
+str1.toUpperCase() : AAABBBCCCDDDAAA
+str1.replace("A", "a") : aaaBbbCccDddaaa
+str1.replaceAll("A", "a") : aaaBbbCccDddaaa
+"abcde".compareTo("abcde") : 0
+"abcde".compareTo("bbcde") : -1
+"cbcde".compareTo("abcde") : 2
+a.replace("a", "*") : ***bbbcccdddeee***ccc******
+a.replaceAll("[ac]", "*") : ***bbb***dddeee************
+         */
     }
 
 
@@ -111,6 +144,21 @@ class DataStructureMethods
     arraylist.sort((a, b) -> a - b);
     System.out.println("arraylist.sort((a,b) -> a-b) = " + arraylist.toString());
 
+    /*
+--------------------------
+Method Name : Method Array List
+--------------------------
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+arraylist.get(3) = 3
+arraylist.size() = 10
+arraylist.add(7) = true
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 7]
+arraylist.contains(5)  : true
+arraylist.indexOf(2) = 2
+arraylist.remove(0) = 0 => [1, 2, 3, 4, 5, 6, 7, 8, 9, 7]
+arraylist.set(3, -1) = 4 => [1, 2, 3, -1, 5, 6, 7, 8, 9, 7]
+arraylist.sort((a,b) -> a-b) = [-1, 1, 2, 3, 5, 6, 7, 7, 8, 9]
+     */
 }
 
 
@@ -193,6 +241,30 @@ class DataStructureMethods
         System.out.println(" => deque = " + deque);
         System.out.print("deque.pollFirst() = " + deque.pollFirst());;
         System.out.println(" => deque = " + deque);
+
+        /*
+--------------------------
+Method Name : Queue
+--------------------------
+queue = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+queue.peek() = 1
+queue.size() = 9
+queue.isEmpty() = false
+queue.poll() = 1
+
+------------------------------
+
+deque = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+deque.peekFirst() = 1
+deque.pollLast() = 9
+deque.offerFirst(0) = true => deque = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+deque.offerLast(0) = true => deque = [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+deque.pollFirst() = 0 => deque = [1, 2, 3, 4, 5, 6, 7, 8, 0]
+deque.pollFirst() = 1 => deque = [2, 3, 4, 5, 6, 7, 8, 0]
+
+Process finished with exit code 0
+
+         */
     }
 
 
