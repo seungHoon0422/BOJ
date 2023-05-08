@@ -1,12 +1,19 @@
-import javax.lang.model.SourceVersion;
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 /*
     2683 치즈 Gold3
     시작 12:20
-    종료
-    소요시간
+    종료 13: 5
+    소요시간 45분
+
     * 문제 조건
     1. 가장자리에 있는 치즈는 1시간이후에 녹는다.
     2. 치즈로 감싸여있는 공간은 외부로 판단하지 않는다.
@@ -23,7 +30,7 @@ import java.io.*;
  */
 
 
-public class Main {
+public class Main_2683_Gold3_치즈 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringBuilder sb = new StringBuilder();
