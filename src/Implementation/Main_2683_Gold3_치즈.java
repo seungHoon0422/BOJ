@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 /*
     2683 치즈 Gold3
     시작 12:20
-    종료 13: 5
+    종료 13:05
     소요시간 45분
 
     * 문제 조건
