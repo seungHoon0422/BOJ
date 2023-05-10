@@ -1,5 +1,8 @@
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 /*
@@ -19,7 +22,7 @@ import java.io.*;
  */
 
 
-public class Main {
+public class Main_17413_Silver3_단어뒤집기2 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
