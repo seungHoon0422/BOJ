@@ -1,5 +1,10 @@
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 
 /*
@@ -29,7 +34,7 @@ M 개의 나무를 구입해 나무를 심는다. -> 한칸에 여러개의 나�
 
 
  */
-public class Main {
+public class Main_16235_Gold3_나무제태크 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
