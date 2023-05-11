@@ -28,7 +28,7 @@ import java.util.StringTokenizer;
 
  */
 
-public class Main_17143_Gold1_낚시왕 {
+public class Main_17143_Gold1 {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
