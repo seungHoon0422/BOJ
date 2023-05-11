@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
  */
 public class Main_3085_Silver2 {
 
+
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     static int n;
