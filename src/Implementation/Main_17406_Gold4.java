@@ -1,5 +1,10 @@
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /*
     17406 Gold4 배열돌리기 4
@@ -11,7 +16,7 @@ import java.io.*;
 
  */
 
-public class Main {
+public class Main_17406_Gold4 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
