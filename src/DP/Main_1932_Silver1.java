@@ -25,6 +25,7 @@ public class Main_1932_Silver1 {
 
     public static void main(String[] args) throws IOException {
 
+
         int N = Integer.parseInt(br.readLine());
         int[][] board = new int[N][N];
 
