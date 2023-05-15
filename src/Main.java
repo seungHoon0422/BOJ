@@ -27,11 +27,9 @@ public class Main {
         }
         int size = Math.min(N, M);
         while(size > 1) {
-            int r = 0;
-            int c = 0;
 
-            for(; r + size - 1< N; r++) {
-                for(c = 0; c + size - 1 < M; c++) {
+            for(int r = 0; r + size - 1< N; r++) {
+                for(int c = 0; c + size - 1 < M; c++) {
                     int node1 = board[r][c];
                     int node2 = board[r+size-1][c];
                     int node3 = board[r][c+size-1];
