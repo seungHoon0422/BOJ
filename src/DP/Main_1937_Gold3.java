@@ -1,5 +1,10 @@
-import java.util.*;
-import java.io.*;
+package DP;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 
 /*
@@ -7,7 +12,7 @@ import java.io.*;
 
     시작시간 : 5:22
     종료시간 :
-    소요시간 :
+    소요시간 : 1시간
 
     <문제조건>
     - 판다는 대나무를 먹고 이동할 때 그 전 지역보다 대나무가 더 많아야 한다.
@@ -22,7 +27,7 @@ import java.io.*;
 
  */
 
-public class Main {
+public class Main_1937_Gold3 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
