@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
 
  */
 
-public class Main_Gold5_12865 {
+public class Main_12865_Gold5 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
