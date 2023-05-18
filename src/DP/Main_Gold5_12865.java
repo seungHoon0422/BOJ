@@ -10,8 +10,8 @@ import java.util.StringTokenizer;
     12865 Gold3 평범한 배낭
 
     시작시간 : 3:46
-    종료시간 :
-    소요시간 :
+    종료시간 : 4:13
+    소요시간 : 27분
 
 
  */
