@@ -1,5 +1,10 @@
-import java.util.*;
-import java.io.*;
+package DP;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 
 /*
@@ -12,7 +17,7 @@ import java.io.*;
 
  */
 
-public class Main {
+public class Main_1106_Gold5 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
