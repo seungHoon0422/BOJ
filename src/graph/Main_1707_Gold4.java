@@ -1,8 +1,14 @@
-import java.util.*;
-import java.io.*;
+package graph;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /*
     1707 이분그래프 Gold4
+    https://www.acmicpc.net/problem/1707
 
     시작시간 : 4:02
     종료시간 : 4:29
@@ -13,7 +19,7 @@ import java.io.*;
 
  */
 
-public class Main {
+public class Main_1707_Gold4 {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
