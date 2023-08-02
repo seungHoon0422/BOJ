@@ -1,8 +1,11 @@
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 
-public class Main {
+public class Main_14500_Gold4 {
 
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static StringTokenizer st;

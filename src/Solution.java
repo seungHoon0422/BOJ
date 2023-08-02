@@ -1,87 +1,85 @@
 import java.util.*;
-
+import java.io.*;
 
 /*
 
 
-    시작시간 : 12:42
-    종료시간 :
-    소요시간 :
-    다이얼의 길이 <= 100,000
-    password를 맞추기 위해
-
-
-    1 5 9 3 7
-    2 6 0 4 8
-    2 5 9 3 7
-
-    2 5 9 3 7
-
+    2023 kakao blind, Level1 개인정보 수집 유호기간
+    시작시간 : 2:06
 
  */
+
 
 class Solution {
 
-    static int answer;
-    public int solution(int[] dials, int[] password) {
-        answer = Integer.MAX_VALUE;
+    static String today;
+    static String[] terms, privacies;
 
+    static Map<String, Integer> term = new HashMap<>();
 
+    public int[] solution(String to, String[] ts, String[] ps) {
 
+        int[] answer = {};
+        ArrayList<Integer> answerList = new ArrayList<>();
+        today = to;
+        terms = ts;
+        privacies = ps;
 
-        move(0, 0, 0, dials, password);
-        return answer;
-    }
+        StringTokenizer st = new StringTokenizer(today, ".");
+        int year = Integer.parseInt(st.nextToken());
+        int month = Integer.parseInt(st.nextToken());
+        int day = Integer.parseInt(st.nextToken());
 
-
-
-    // (다이얼 위치, 돌린 횟수, 돌린 방향 누적값, 다이얼, 패스워드)
-    static void move(int index, int count, int acc, int[] dials, int[] password) {
-
-        // 기저조건
-        if(index == dials.length) {
-            answer = Math.min(answer, count);
-            return;
+        for(int i=0; i<terms.length; i++) {
+            String[] split = ts[i].split(" ");
+            term.put(split[0], Integer.parseInt(split[1]));
         }
 
-        int value = ((dials[index] + acc) + 10) % 10;
-        // 돌리지 않아도 되는 경우
-        if(value == password[index]) move(index+1, count, acc, dials, password);
-        else {
-            // 돌려야하는 경우
+        for(int i=0; i<ps.length; i++) {
+            String[] split = ps[i].split(" ");
+            String date = split[0];
+            String type = split[1];
 
-            // 아래로 돌리기
-            int moveCountA = 0;
-            while(value != password[index]) {
-                value = (10 + value - 1) % 10;
-                moveCountA++;
+            st = new StringTokenizer(date, ".");
+            int tempYear = Integer.parseInt(st.nextToken());
+            int tempMonth = Integer.parseInt(st.nextToken());
+            int tempDay = Integer.parseInt(st.nextToken());
+            tempMonth += term.get(type);
+
+            tempDay--;
+            if(tempDay< 1) {
+                tempDay = 28;
+                tempMonth--;
+            }
+            if(tempMonth > 12) {
+                tempYear += tempMonth / 12;
+                tempMonth = tempMonth % 12;
+                if (tempMonth == 0) {
+                    tempYear--;
+                    tempMonth = 12;
+                }
             }
 
-            value = ((dials[index] + acc) + 10) % 10;
-            // 위로 돌리기
-            int moveCountB = 0;
-            while(value != password[index]) {
-                value = (value + 1) % 10;
-                moveCountB++;
+                if(compareDate(year, month, day, tempYear, tempMonth, tempDay)) {
+                    answerList.add(i+1);
+                }
             }
+            answer = new int[answerList.size()];
+            for(int i=0; i<answerList.size(); i++)
+                answer[i] = answerList.get(i);
 
-            if(moveCountA < moveCountB) move(index+1, count + moveCountA, acc - moveCountA, dials, password);
-            else move(index+1, count + moveCountB, acc + moveCountB, dials, password);
-
-
+            return answer;
         }
 
+        private boolean compareDate(int year, int month, int day, int tempYear, int tempMonth, int tempDay) {
 
+            if(year > tempYear) return true;
+            else if(year == tempYear) {
+                if(month > tempMonth) return true;
+                else if(month == tempMonth) {
+                    if(day > tempDay) return true;
+                }
+            }
+            return false;
+        }
     }
-
-
-}
-
-/*
-
- 0 1 2 3 4 5 6 7 8 9
-   o             o
-
-
-
- */
