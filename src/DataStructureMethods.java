@@ -143,6 +143,7 @@ a.replaceAll("[ac]", "*") : ***bbb***dddeee************
     System.out.println(" => " + Arrays.toString(arraylist.toArray()));
     arraylist.sort((a, b) -> a - b);
     System.out.println("arraylist.sort((a,b) -> a-b) = " + arraylist.toString());
+    Collections.sort(arraylist);
 
     /*
 --------------------------
@@ -285,5 +286,19 @@ Process finished with exit code 0
         System.out.println("------------------------------");
         System.out.println();
     }
+
+
+    static class Node implements Comparable<Node> {
+        int value;
+
+        @Override
+        public int compareTo(Node node) {
+            return this.value - node.value;
+        }
+
+
+
+    }
+
 
 }

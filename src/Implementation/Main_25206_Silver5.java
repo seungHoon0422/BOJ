@@ -1,9 +1,13 @@
-import java.util.*;
-import java.io.*;
+package Implementation;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 
-
-public class Main {
+public class Main_25206_Silver5 {
 
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
