@@ -7,7 +7,7 @@ public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringBuilder sb = new StringBuilder();
 
-    static int tc, k, n;
+        static int tc, k, n;
 
     public static void main(String[] args) throws IOException{
 
