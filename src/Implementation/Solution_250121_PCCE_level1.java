@@ -1,6 +1,10 @@
-import java.util.*;
+package Implementation;
 
-class Solution {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Solution_250121_PCCE_level1 {
 
     static int extIndex=0, sortIndex=0;
 
