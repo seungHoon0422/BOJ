@@ -1,8 +1,6 @@
 package Implementation;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 class Solution_250121_PCCE_level1 {
 
@@ -12,6 +10,7 @@ class Solution_250121_PCCE_level1 {
     public int[][] solution(int[][] data, String ext, int val_ext, String sort_by) {
         int[][] answer = {};
 
+        Queue<Integer> queue = new LinkedList<>();
         if("code".equals(ext)) extIndex = 0;
         else if("date".equals(ext)) extIndex = 1;
         else if("maximum".equals(ext)) extIndex = 2;

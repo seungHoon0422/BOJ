@@ -1,7 +1,10 @@
-import java.util.*;
+package Implementation;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 
-class Solution {
+class Solution_250136_Level2_석유시추 {
 
     int R, C;
     int[][] landPrize, landNumber;
