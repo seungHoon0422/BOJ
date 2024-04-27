@@ -33,11 +33,8 @@ public class Main_17143_Gold1 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
-
     static int R, C, M;
-
     static Shark[][] board;
-
     static int position, answer;
 
     public static void main(String[] args) throws IOException {
@@ -94,22 +91,17 @@ public class Main_17143_Gold1 {
         // 이동한 위치에 상어가 존재할 경우 크기비교 시작
         for(int i=0; i<R; i++) {
             for(int j=0; j<C; j++) {
-
                 if(board[i][j] == null) continue;
-
                 // 상어 이동
                 Shark shark = moveDir(board[i][j]);
 
                 // 이동한 위치에 상어가 없거나, 기존에 있던 상어보다 사이즈가 큰 경우
                 if(afterMove[shark.r][shark.c] == null || afterMove[shark.r][shark.c].size < shark.size)
+                    // 크기가 큰 상어가 작은 상어를 잡아먹는다.
                     afterMove[shark.r][shark.c] = shark;
             }
         }
-
-        // 크기가 큰 상어가 작은 상어를 잡아먹는다.
-
         board = afterMove;
-
     }
 
 
@@ -124,17 +116,14 @@ public class Main_17143_Gold1 {
 
         if(shark.dir <= 2) {
             // 행이동
-
             int restDistance = shark.speed % ((R-1) * 2);
             for(int i=0; i<restDistance; i++) {
                 if(r==0 && shark.dir == 1) shark.dir = 2;
                 else if(r==R-1 && shark.dir == 2) shark.dir = 1;
                 r += dr[shark.dir];
             }
-
         } else {
             // 열이동
-
             int restDistance = shark.speed % ((C-1) * 2);
             for(int i=0; i<restDistance; i++) {
                 if(c==0 && shark.dir == 4) shark.dir = 3;
