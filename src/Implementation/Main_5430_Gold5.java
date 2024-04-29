@@ -15,6 +15,8 @@ import java.util.*;
  * @Solution
  * [구현, 덱]
  * 배열의 앞, 뒤에 해당하는 숫자를 지워야 하는 작업이므로  deque를 사용한다.
+
+ 
  */
 class Main_5430_Gold5 {
 
