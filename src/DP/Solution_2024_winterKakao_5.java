@@ -1,4 +1,6 @@
-class Solution {
+package DP;
+
+class Solution_2024_winterKakao_5 {
 
     static int[] tri, rec;
 
