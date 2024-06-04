@@ -1,7 +1,12 @@
-import java.util.*;
+package Greedy;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
-class Solution {
+class Solution_2024_KakaoInternship_2 {
 
     Map<Integer, List<Integer>> out = new HashMap<>();
     Map<Integer, List<Integer>> in = new HashMap<>();
