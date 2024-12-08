@@ -28,10 +28,9 @@ public class Main {
 //        int rest = total - testSize;
         comb(total-testSize, new int[testSize]);
         System.out.println(combList.size());
-
         for(int i=combList.size()-1; i>=0; i--) {
             int[] result =  combList.get(i);
-            for(int j=0; j< testSize; j++){
+            for(int j=0; j< testSize; j++) {
                 result[j]++;
             }
             System.out.println(Arrays.toString(result));
