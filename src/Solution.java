@@ -5,18 +5,18 @@ import java.util.*;
  * PCCP 기출문제 3. 충돌 위험 찾기
  *
  * 로봇마다 정해진 route 가 존재
- * points : 운송장의 위치 정보 -> 1부터 시작할 수 있게 수정 필요
+ * points : 운송장의 위치 정보 -> 1부터 시작할 수 있게 수정
  * routes : 각 로봇의 이동 경로
  * - 운송장을 순서대로 이동 필요
  *
  * 충돌 위험을 카운트하는 문제
- * 매번 운동을 마칠때마다 충돌 위험횟수를 count
+ * 매번 이동을 마칠때마다 충돌 위험횟수를 count
  *
  * 로봇은 운송장 -> 운송장으로 이동할 때 최단거리 이동
- * - r 좌표의 변화를 c좌표의 변화보다 먼저 이
+ * - r 좌표의 변화를 c좌표의 변화보다 먼저 이동
  *
  * 처음 시작위치에서도 충돌위험 확인
- * 마지막 도착지점에서도 충돌 위험 확인
+ * 마지막 도착지점에서도 충돌 위험 확인 필요
  *
  */
 class Solution {
@@ -29,6 +29,7 @@ class Solution {
     public int solution(int[][] points, int[][] routes) {
 
         // init variables
+
         // 운송장 초기 세팅
         for(int i = 0; i < points.length; i++) {
             stationMap.put(i+1, new Station(i+1, points[i][0], points[i][1]));
@@ -58,9 +59,6 @@ class Solution {
 
             crashCount();
         }
-
-
-
 
         return crashCounter;
     }
